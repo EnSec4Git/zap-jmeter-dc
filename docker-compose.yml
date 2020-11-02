@@ -11,7 +11,8 @@ services:
      - SWAGGER_BASE_PATH=/v2
   
   owaspzap:
-    image: owasp/zap2docker-stable
+    #image: owasp/zap2docker-stable
+    build: .
     volumes:
      - ./:/opt/lpwd
     stdin_open: true
