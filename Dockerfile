@@ -7,4 +7,4 @@ COPY zaprun.py /zaprun.py
 VOLUME ["/opt/lpwd"]
 WORKDIR /opt/lpwd
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["python3 /zaprun.py"]
+CMD ["/usr/bin/python3 /zaprun.py"]
