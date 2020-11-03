@@ -1,7 +1,7 @@
 version: '2'
 
 services:
-  testableapi:
+  testableapi2:
     image: swaggerapi/petstore
     ports:
      - "8080:8080"
@@ -12,10 +12,10 @@ services:
   
   jmeter:
     #image: justb4/jmeter
-    build: 
+    build:
         context: .
         dockerfile: Dockerfile-jmeter
-    command: -Dlog_level.jmeter=DEBUG -Jhost=testableapi -Jport=8080 -n -t /mnt/input/PetApi.jmx -l /tmp/lpwd/PetApi.jtl -j /tmp/lpwd/jmeter_PetApi.log -e -o /tmp/lpwd/PetApi
+    command: -Dlog_level.jmeter=DEBUG -Jhost=testableapi2 -Jport=8080 -n -t /mnt/input/PetApi.jmx -l /tmp/lpwd/PetApi.jtl -j /tmp/lpwd/jmeter_PetApi.log -e -o /tmp/lpwd/PetApi
     volumes:
      - .:/mnt/input:ro
      - ./jmeterdata:/tmp/lpwd:rw
