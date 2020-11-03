@@ -15,9 +15,9 @@ SCANURL = 'http://testableapi:8080/'
 SWAGGERURL = 'http://localhost:8080/v2/swagger.json'
 CTXNAME = 'localtest'
 AJAXTO = 5 * 60 # a.k.a. 5 minutes
-DONE = '/opt/lpwd/done.txt'
-ENTRYPOINTS = '/opt/lpwd/entrypoints.txt'
-RESULTS = '/opt/lpwd/results.csv'
+DONE = '/tmp/lpwd/done.txt'
+ENTRYPOINTS = '/tmp/lpwd/entrypoints.txt'
+RESULTS = '/tmp/lpwd/results.csv'
 
 time.sleep(10) # Boot up time
 
