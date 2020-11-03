@@ -7,4 +7,5 @@ COPY zaprun.py /zaprun.py
 VOLUME ["/opt/lpwd"]
 WORKDIR /opt/lpwd
 ENTRYPOINT ["/docker-entrypoint.sh"]
+HEALTHCHECK CMD test -e /opt/lpwd/done.txt
 CMD ["/usr/bin/python3", "/zaprun.py"]

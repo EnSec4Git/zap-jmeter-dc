@@ -15,6 +15,7 @@ SCANURL = 'http://testableapi:8080/'
 SWAGGERURL = 'http://localhost:8080/v2/swagger.json'
 CTXNAME = 'localtest'
 AJAXTO = 5 * 60 # a.k.a. 5 minutes
+DONE = '/opt/lpwd/done.txt'
 ENTRYPOINTS = '/opt/lpwd/entrypoints.txt'
 RESULTS = '/opt/lpwd/results.csv'
 
@@ -89,3 +90,6 @@ with open(RESULTS, 'w', newline='') as csvfile:
 print('Hosts: {}'.format(', '.join(zap.core.hosts)))
 print('Alerts: ')
 pprint(alerts)
+
+with open(DONE, 'w') as f:
+    f.write("OK")
