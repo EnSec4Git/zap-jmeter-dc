@@ -7,7 +7,7 @@ services:
      - "8080:8080"
     environment:
      - SWAGGER_HOST=http://petstore.swagger.io
-     - SWAGGER_URL=http://localhost:8080
+     - SWAGGER_URL=http://localhost:8088
      - SWAGGER_BASE_PATH=/v2
   
   jmeter:
@@ -15,7 +15,7 @@ services:
     build:
         context: .
         dockerfile: Dockerfile-jmeter
-    command: -Dlog_level.jmeter=DEBUG -Jhost=testableapi2 -Jport=8080 -n -t /mnt/input/PetApi.jmx -l /tmp/lpwd/PetApi.jtl -j /tmp/lpwd/jmeter_PetApi.log -e -o /tmp/lpwd/PetApi
+    command: -Dlog_level.jmeter=DEBUG -Jhost=testableapi2 -Jport=8088 -n -t /mnt/input/PetApi.jmx -l /tmp/lpwd/PetApi.jtl -j /tmp/lpwd/jmeter_PetApi.log -e -o /tmp/lpwd/PetApi
     volumes:
      - .:/mnt/input:ro
      - ./jmeterdata:/tmp/lpwd:rw
