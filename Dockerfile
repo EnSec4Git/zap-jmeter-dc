@@ -1,10 +1,10 @@
 FROM owasp/zap2docker-stable
 WORKDIR /
 COPY docker-entrypoint.sh /docker-entrypoint.sh
-#RUN ["chmod", "+x", "/docker-entrypoint.sh"]
 COPY zaprun.py /zaprun.py
-#RUN ["chmod", "+x", "/zaprun.py"]
-RUN mkdir /tmp/lpwd
+USER root
+RUN mkdir /tmp/lpwd && chown zap:zap /tmp/lpwd
+USER zap
 VOLUME ["/tmp/lpwd"]
 WORKDIR /tmp/lpwd
 ENTRYPOINT ["/docker-entrypoint.sh"]
