@@ -1,0 +1,3 @@
+FROM justb4/jmeter
+COPY jm-entrypoint.sh /jm-entrypoint.sh
+ENTRYPOINT ["/jm-entrypoint.sh"]
