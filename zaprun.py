@@ -93,3 +93,5 @@ pprint(alerts)
 
 with open(DONE, 'w') as f:
     f.write("OK")
+
+time.sleep(30)
