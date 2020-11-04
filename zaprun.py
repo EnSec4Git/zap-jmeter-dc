@@ -81,7 +81,7 @@ zap.openapi.import_url(SWAGGERURL)
 
 alerts = zap.core.alerts()
 csval = list(map(lambda x: (x['risk'], repr(x)), alerts))
-with open(RESULTS, 'w', newline='') as csvfile:
+with open(RESULTS, 'w', newline='', encoding='utf-8') as csvfile:
     csvwriter = csv.writer(csvfile, delimiter=',', quotechar='"')
     csvwriter.writerow(['Risk', 'Description'])
     for entry in csval:
