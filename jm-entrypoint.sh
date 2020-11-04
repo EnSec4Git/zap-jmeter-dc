@@ -2,4 +2,8 @@
 
 sleep 20
 
-exec /entrypoint.sh $@
+bash /entrypoint.sh $@
+
+echo "OK" > /tmp/lpwd/done.txt
+
+sleep 30

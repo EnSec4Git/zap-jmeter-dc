@@ -3,8 +3,10 @@ version: '2'
 services:
   testableapi:
     image: swaggerapi/petstore
-    ports:
-     - "8080:8080"
+    # ports:
+    #  - "8080:8080"
+    expose:
+     - "8080"
     environment:
      - SWAGGER_HOST=http://petstore.swagger.io
      - SWAGGER_URL=http://localhost:8080
@@ -15,5 +17,3 @@ services:
     build: .
     volumes:
      - ./zapdata:/tmp/lpwd:rw
-    stdin_open: true
-    tty: true

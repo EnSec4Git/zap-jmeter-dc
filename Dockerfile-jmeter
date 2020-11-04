@@ -1,4 +1,4 @@
 FROM justb4/jmeter
 COPY jm-entrypoint.sh /jm-entrypoint.sh
-HEALTHCHECK --retries=1000 --start-period=180s CMD false
+HEALTHCHECK --retries=1000 --start-period=60s CMD test -e /tmp/lpwd/done.txt
 ENTRYPOINT ["/jm-entrypoint.sh"]
