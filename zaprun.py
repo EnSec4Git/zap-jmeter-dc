@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-### Created using the OWASP ZAP API documentation:
-### https://www.zaproxy.org/docs/api/
-### Original Documentation License: Apache 2
+# Created using the OWASP ZAP API documentation:
+# https://www.zaproxy.org/docs/api/
+# Original Documentation License: Apache 2
 
 import time
 import json
@@ -14,23 +14,24 @@ from zapv2 import ZAPv2
 SCANURL = 'http://testableapi:8080/'
 SWAGGERURL = 'http://localhost:8080/v2/swagger.json'
 CTXNAME = 'localtest'
-AJAXTO = 5 * 60 # a.k.a. 5 minutes
+AJAXTO = 5 * 60  # a.k.a. 5 minutes
 DONE = '/tmp/lpwd/done.txt'
 ENTRYPOINTS = '/tmp/lpwd/entrypoints.txt'
 RESULTS = '/tmp/lpwd/results.csv'
 
-time.sleep(10) # Boot up time
+time.sleep(10)  # Boot up time
 
 zap = ZAPv2()
 
 ctxId = zap.context.new_context(CTXNAME)
 print(ctxId)
-zap.context.set_context_regexs(CTXNAME, json.dumps([r'^(http(s)?:\/\/testableapi:8080).*$']), '[]')
+zap.context.set_context_regexs(CTXNAME, json.dumps(
+    [r'^(http(s)?:\/\/testableapi:8080).*$']), '[]')
 
-#zap.urlopen(SCANURL)
-#time.sleep(5)
+# zap.urlopen(SCANURL)
+# time.sleep(5)
 
-### Spider
+# Spider
 
 scanID = zap.spider.scan(SCANURL, contextname=CTXNAME)
 while int(zap.spider.status(scanID)) < 100:
@@ -43,7 +44,7 @@ print('Spider has completed!')
 with open(ENTRYPOINTS, 'w') as out:
     out.write('\n'.join(map(str, zap.spider.results(scanID))))
 
-### AJAX Spider
+# AJAX Spider
 
 print('Ajax Spider target {}'.format(SCANURL))
 scanID = zap.ajaxSpider.scan(SCANURL, contextname=CTXNAME)
@@ -60,7 +61,7 @@ ajaxResults = zap.ajaxSpider.results(start=0, count=10000)
 with open(ENTRYPOINTS, 'a') as out:
     out.write('\n'.join(map(str, ajaxResults)))
 
-### Active Scan
+# Active Scan
 
 scanID = zap.ascan.scan(SCANURL, contextid=ctxId)
 while int(zap.ascan.status(scanID)) < 100:
@@ -70,12 +71,12 @@ while int(zap.ascan.status(scanID)) < 100:
 
 print('Active Scan completed')
 
-### Swagger Import
+# Swagger Import
 
 zap.openapi.import_url(SWAGGERURL)
 
 
-### Export results
+# Export results
 
 
 alerts = zap.core.alerts()

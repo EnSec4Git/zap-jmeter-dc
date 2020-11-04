@@ -1,4 +1,4 @@
-version: '2'
+version: "2"
 
 services:
   testableapi:
@@ -6,14 +6,14 @@ services:
     # ports:
     #  - "8080:8080"
     expose:
-     - "8080"
+      - "8080"
     environment:
-     - SWAGGER_HOST=http://petstore.swagger.io
-     - SWAGGER_URL=http://localhost:8080
-     - SWAGGER_BASE_PATH=/v2
-  
+      - SWAGGER_HOST=http://petstore.swagger.io
+      - SWAGGER_URL=http://localhost:8080
+      - SWAGGER_BASE_PATH=/v2
+
   owaspzap:
     #image: owasp/zap2docker-stable
     build: .
     volumes:
-     - ./zapdata:/tmp/lpwd:rw
+      - ./zapdata:/tmp/lpwd:rw
