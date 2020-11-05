@@ -3,6 +3,7 @@ version: "2"
 services:
   testableapi2:
     image: swaggerapi/petstore
+    cpus: 0.5
     # ports:
     #  - "8088:8080"
     expose:
@@ -14,6 +15,10 @@ services:
 
   jmeter:
     #image: justb4/jmeter
+    cpus: 0.5
+    mem_limit: 256m
+    mem_reservation: 256m
+    memswap_limit: 128m
     build:
       context: .
       dockerfile: Dockerfile-jmeter
