@@ -1,4 +1,4 @@
-version: "2"
+version: "2.2"
 
 services:
   testableapi2:
@@ -18,7 +18,7 @@ services:
     cpus: 0.5
     mem_limit: 256m
     mem_reservation: 256m
-    memswap_limit: 128m
+    memswap_limit: 256m
     build:
       context: .
       dockerfile: Dockerfile-jmeter
